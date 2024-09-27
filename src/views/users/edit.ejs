@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+    <style>
+      body {
+        background-color: #f8f9fa; 
+        color: #343a40; 
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 2rem; 
+      }
+
+      .container {
+        background-color: #ffffff; 
+        padding: 30px;
+        border-radius: 0.375rem; 
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); 
+      }
+
+      .form-group label {
+        color: #495057; 
+        font-weight: bold; 
+      }
+
+      .form-control {
+        background-color: #ffffff; 
+        color: #495057; 
+        border: 1px solid #ced4da; 
+        border-radius: 0.375rem; 
+      }
+
+      .form-control:focus {
+        background-color: #ffffff; 
+        color: #495057;
+        border-color: #80bdff; 
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
+      }
+
+      .btn-primary {
+        background-color: #007bff; 
+        border-color: #007bff; 
+        color: #ffffff; 
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3; 
+        border-color: #0056b3; 
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+          max-width: 100%;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .btn-primary {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .btn-primary {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Editar Usuário</h1>
+        <form action="/users/update/<%= user.id %>" method="post">
+            <div class="form-group mb-3">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>" required />
+            </div>
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" required />
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Deixe em branco se não quiser alterar" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="papel">Papel</label>
+                <input type="text" class="form-control" id="papel" name="papel" value="<%= user.papel %>" required />
+            </div>
+            <div class="form-group mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="active" name="active" <%= user.active ? 'checked' : '' %> />
+                <label class="form-check-label" for="active">Ativo</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Salvar</button>
+        </form>
+    </div>
+</body>
+</html>
